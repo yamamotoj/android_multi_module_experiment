@@ -29,15 +29,16 @@ class ClassGenerator:
     def generate_class_text(self, file):
         print("package {package_name}".format(package_name=self.get_package_name()), file=file)
         if self.prev_class is not None and self.prev_class.get_package_name() != self.get_package_name():
-            print("import {import_name}".format(import_name=self.prev_class.get_import_name()))
+            print("import {import_name}".format(import_name=self.prev_class.get_import_name()),
+                  file=file)
         print("class {class_name} {{".format(class_name=self.class_name), file=file)
         if self.prev_class is None:
-            print("    fun method0() = Unit", file=file)
+            print("    fun method0() {}", file=file)
         else:
-            print("    fun method0() = {prev_class_name}().method{method_num}()".format(
+            print("    fun method0() {{ {prev_class_name}().method{method_num}() }}".format(
                 prev_class_name=self.prev_class.class_name, method_num=self.method_num), file=file)
         for i in range(self.method_num):
-            print("    fun method{num}() = method{prev}()".format(num=i + 1, prev=i), file=file)
+            print("    fun method{num}() {{ method{prev}() }}".format(num=i + 1, prev=i), file=file)
 
         print("}", file=file)
 

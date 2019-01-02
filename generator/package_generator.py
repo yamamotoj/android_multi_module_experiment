@@ -32,6 +32,6 @@ class PackageGenerator:
 
 if __name__ == '__main__':
     generator = PackageGenerator(
-        Path("../SingleModuleApp/app/src/main/java/com/github/yamamotoj/singlemoduleapp"), "foo",
-        10000, "bar", 5)
+        Path("../SingleModuleApp/app/src/main/java/com/github/yamamotoj/singlemoduleapp"),
+        "package", 10000, "Foo", 5)
     generator.generate_classes()
