@@ -32,6 +32,6 @@ class PackageGenerator:
 
 if __name__ == '__main__':
     generator = PackageGenerator(
-        Path("../SingleModuleApp/app/src/main/java/com/github/yamamotoj/singlemoduleapp"),
-        "package", 10000, "Foo", 5)
+        Path("/Users/j.yamamoto/Documents/github/android_multi_module_experiment/MultiModuleApp1/app/src/main/java/com/github/yamamotoj/multimoduleapp1"),
+        "package", 2500, "Foo", 5)
     generator.generate_classes()
