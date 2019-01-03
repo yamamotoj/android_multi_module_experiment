@@ -1,0 +1,27 @@
+package com.github.yamamotoj.module2.package34
+
+class Foo03426 {
+    fun method0() {
+        Foo03425().method5()
+    }
+
+    fun method1() {
+        method0()
+    }
+
+    fun method2() {
+        method1()
+    }
+
+    fun method3() {
+        method2()
+    }
+
+    fun method4() {
+        method3()
+    }
+
+    fun method5() {
+        method4()
+    }
+}
