@@ -50,4 +50,4 @@ def generateMoudle(app_root: Path, module_num: int):
 if __name__ == '__main__':
     app_root = Path(
         "/Users/j.yamamoto/Documents/github/android_multi_module_experiment/MultiModuleApp2")
-    generateMoudle(app_root, 3)
+    generateMoudle(app_root, 4)
