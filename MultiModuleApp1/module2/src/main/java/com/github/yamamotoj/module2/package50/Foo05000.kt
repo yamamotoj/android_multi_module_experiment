@@ -1,7 +1,11 @@
 package com.github.yamamotoj.module2.package50
 
+import com.github.yamamotoj.module1.package49.Foo04999
+
 class Foo05000 {
-    fun method0() {}
+    fun method0() {
+        Foo04999().method5()
+    }
     fun method1() {
         method0()
     }
