@@ -1,6 +1,6 @@
 package com.github.yamamotoj.module3.package50
 
-import com.github.yamamotoj.module1.package49.Foo04999
+import com.github.yamamotoj.module2.package49.Foo04999
 
 class Foo05000 {
     fun method0() {
