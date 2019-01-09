@@ -11,7 +11,8 @@ def split_list(l, n):
 class PackageGenerator:
 
     def __init__(self, parent_dir: Path, package_start_num: int, package_prefix: str,
-                 class_start_num: int, class_num: int, class_prefix: str, method_num: int):
+                 class_start_num: int, class_num: int, class_prefix: str, method_num: int,
+                 use_dagger: bool):
         self.parent_dir = parent_dir
         self.package_start_num = package_start_num
         self.package_prefix = package_prefix
@@ -19,6 +20,7 @@ class PackageGenerator:
         self.class_num = class_num
         self.class_prefix = class_prefix
         self.method_num = method_num
+        self.use_dagger = use_dagger
 
     def generate_classes(self):
         prev_class = None
@@ -31,23 +33,31 @@ class PackageGenerator:
                 class_name = "{}{:0=5}".format(self.class_prefix, class_index)
                 print(package_name, class_name)
                 class_generator = ClassGenerator(self.parent_dir, package_name, class_name, 5,
-                                                 prev_class)
+                                                 prev_class, self.use_dagger)
                 class_generator.write_class_file()
                 prev_class = class_generator
 
 
-def generateMoudle(app_root: Path, module_num: int):
+def generate_module(app_root: Path, module_num: int, use_dagger: bool):
     module_name = "module{}".format(module_num)
     src_path = app_root / module_name / "src/main/java/com/github/yamamotoj" / module_name
     generator = PackageGenerator(
         src_path,
         (module_num - 1) * 25, "package",
         (module_num - 1) * 2500, 2500, "Foo",
-        5)
+        5, use_dagger)
+    generator.generate_classes()
+
+
+def generate_root_module():
+    path = Path("/Users/j.yamamoto/Documents/github/android_multi_module_experiment/DaggerSingleModuleApplication/app/src/main/java/com/github/yamamotoj/daggersinglemoduleapplication")
+    generator = PackageGenerator(
+        path,
+        0, "package",
+        0, 10000, "Foo",
+        5, True)
     generator.generate_classes()
 
 
 if __name__ == '__main__':
-    app_root = Path(
-        "/Users/j.yamamoto/Documents/github/android_multi_module_experiment/MultiModuleApp2")
-    generateMoudle(app_root, 4)
+    generate_root_module()
