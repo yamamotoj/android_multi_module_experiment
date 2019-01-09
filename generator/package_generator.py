@@ -54,7 +54,7 @@ def generate_root_module():
     generator = PackageGenerator(
         path,
         0, "package",
-        0, 10000, "Foo",
+        0, 2000, "Foo",
         5, True)
     generator.generate_classes()
 
