@@ -43,8 +43,8 @@ def generate_module(app_root: Path, module_num: int, use_dagger: bool):
     src_path = app_root / module_name / "src/main/java/com/github/yamamotoj" / module_name
     generator = PackageGenerator(
         src_path,
-        (module_num - 1) * 25, "package",
-        (module_num - 1) * 2500, 2500, "Foo",
+        (module_num - 1) * 5, "package",
+        (module_num - 1) * 500, 500, "Foo",
         5, use_dagger)
     generator.generate_classes()
 
@@ -60,4 +60,8 @@ def generate_root_module():
 
 
 if __name__ == '__main__':
-    generate_root_module()
+    app = Path("/Users/j.yamamoto/Documents/github/android_multi_module_experiment/DaggerMultiModuleApp1")
+    generate_module(app, 1, True)
+    generate_module(app, 2, True)
+    generate_module(app, 3, True)
+    generate_module(app, 4, True)
